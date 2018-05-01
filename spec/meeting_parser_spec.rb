@@ -1,7 +1,7 @@
 describe 'MeetingParser' do
 
   before do
-    File.open("meetings.txt", "w") do |f|
+    File.open("meetings_test.txt", "w") do |f|
       f.puts("Marketing presentation 30min")
       f.puts("Ruby presentation 45min")
     end

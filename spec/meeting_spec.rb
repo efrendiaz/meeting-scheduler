@@ -1,4 +1,3 @@
-require_relative '../meeting.rb'
 describe 'Meeting' do
   let(:meeting){Meeting.new(begin_time: 9, duration: 60, title: "Awesome Meeting")}
 

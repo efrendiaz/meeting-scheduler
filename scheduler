@@ -1,9 +1,5 @@
 require 'thor'
-require_relative 'base.rb'
-require_relative 'meeting.rb'
-require_relative 'time_block.rb'
-require_relative 'conference_room.rb'
-require_relative 'meeting_parser.rb'
+Dir[File.join(__dir__, 'lib', '*.rb')].each { |file| require file }
 
 class Scheduler < Thor
 
