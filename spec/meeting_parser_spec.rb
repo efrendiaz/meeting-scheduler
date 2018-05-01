@@ -8,7 +8,7 @@ describe 'MeetingParser' do
   end
 
   it 'it parses meetings correctly' do
-    meetings = MeetingParser.parse("meetings.txt")
+    meetings = MeetingParser.parse("meetings_test.txt")
     expect(meetings.first.duration).to eql(30)
     expect(meetings.first.title).to eql("Marketing presentation")
     expect(meetings.last.duration).to eql(45)

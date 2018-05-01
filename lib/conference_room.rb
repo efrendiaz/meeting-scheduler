@@ -28,12 +28,9 @@ class ConferenceRoom < Base
 
   def report
     output = []
-    meetings.each do|m|
-      if m.begin_time == 1
-        output <<  Meeting.new(title: "Lunch", begin_time: 12).to_s
-      end
-      output << m.to_s
-    end
+    meetings.select{|m| m.begin_time >= 9 && m.begin_time < 12}.each{|m| output << m.to_s}
+    output <<  Meeting.new(title: "Lunch", begin_time: 12).to_s
+    meetings.select{|m| m.begin_time >= 1 && m.begin_time < 5}.each{|m| output << m.to_s}
     output.join("\n")
   end
 end
