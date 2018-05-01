@@ -12,7 +12,7 @@ describe 'ConferenceRoom' do
       room1.book(meeting1)
       room1.book(meeting2)
       room1.book(meeting3)
-      expect(room1.report).to eql("09:00AM Awesome Meeting 1 60min\n10:00AM Awesome Meeting 2 45min\n10:45AM Awesome Meeting 3 30min")
+      expect(room1.report).to eql("09:00AM Awesome Meeting 1 60min\n10:00AM Awesome Meeting 2 45min\n10:45AM Awesome Meeting 3 30min\n12:00AM Lunch")
     end
 
     it "shoudl book meetings in the afternoon if morning is full" do
