@@ -1,0 +1,33 @@
+require 'thor'
+require_relative 'base.rb'
+require_relative 'meeting.rb'
+require_relative 'time_block.rb'
+require_relative 'conference_room.rb'
+require_relative 'meeting_parser.rb'
+
+class Scheduler < Thor
+
+  desc "schedule PATH_TO_MEETINGS_FILE", "schedule meetings"
+  def schedule(meetings_file)
+    meetings = MeetingParser.parse(meetings_file)
+    room1 = ConferenceRoom.new
+    room1.name = "Room #1"
+    room2 = ConferenceRoom.new
+    room2.name = "Room #2"
+    meetings.each do |meeting|
+      [room1, room2].each do |room|
+        if room.available_slot?(meeting.duration)
+          room.book(meeting)
+          break
+        end
+      end
+    end
+
+    [room1, room2].each do |room|
+      puts "#{room.name}: \n"
+      puts room.report
+    end
+  end
+end
+
+Scheduler.start(ARGV)
