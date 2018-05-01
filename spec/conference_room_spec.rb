@@ -6,6 +6,7 @@ describe 'ConferenceRoom' do
   let(:meeting4){Meeting.new(title: "Awesome Meeting 4", duration: 30)}
   let(:meeting5){Meeting.new(title: "Awesome Meeting 5", duration: 60)}
   let(:room1){ConferenceRoom.new(name: "Room #{}1")}
+
   context "#book" do
     it "should book the meeting on the next available slot" do
       room1.book(meeting1)

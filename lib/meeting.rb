@@ -8,11 +8,7 @@ class Meeting < Base
   def begin_time_to_human
     hour =  "%02d" % begin_time.to_i
     minutes = decimal_to_minutes(begin_time.modulo(1))
-    if begin_time >= 9
-      "#{hour}:#{minutes}AM"
-    else
-      "#{hour}:#{minutes}PM"
-    end
+    begin_time >= 9 ? "#{hour}:#{minutes}AM" : "#{hour}:#{minutes}PM"
   end
 
   def decimal_to_minutes(n)

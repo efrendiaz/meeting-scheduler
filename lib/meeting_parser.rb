@@ -6,6 +6,7 @@ class MeetingParser
     meetings = []
     File.open(meetings_file, "r") do |f|
       f.each_line do |meeting_line|
+        # Convert text in an object representation of a meeting that needs to be scheduled
         meetings << create_meeting(meeting_line)
       end
     end
