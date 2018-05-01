@@ -23,6 +23,9 @@ class Scheduler < Thor
       puts "#{room.name}: \n"
       puts room.report
     end
+
+  rescue InvalidFormat => e
+    puts e.message
   end
 end
 

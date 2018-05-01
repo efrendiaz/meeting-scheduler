@@ -1,4 +1,6 @@
-require_relative 'meeting.rb'
+class InvalidFormat < StandardError
+end
+
 
 class MeetingParser
 
@@ -18,6 +20,7 @@ class MeetingParser
     meeting = Meeting.new
     meeting.duration = duration_string.gsub("min","").to_i
     meeting.title = meeting_line.gsub( duration_string, "").rstrip
+    raise InvalidFormat , "Meeting is invalid #{meeting.inspect}" unless meeting.valid?
     meeting
   end
 end

@@ -1,6 +1,9 @@
 class Meeting < Base
   attr_accessor :title, :duration, :begin_time
 
+  def valid?
+    return true unless title.nil? || title == "" || duration == 0 || duration == ""
+  end
   def to_s
     duration.nil? ? "#{begin_time_to_human} #{title}" : "#{begin_time_to_human} #{title} #{duration}min"
   end
