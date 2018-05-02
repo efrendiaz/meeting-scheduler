@@ -1,4 +1,4 @@
-#ZenMate Meeting Scheduler
+# ZenMate Meeting Scheduler
 
 ### Prerequisites
   * Ruby 2.4
