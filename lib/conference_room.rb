@@ -13,9 +13,11 @@ class ConferenceRoom < Base
     @afternoon||= TimeBlock.new(begin_time: 1, available_time: 240)
   end
 
+
   def book(meeting)
     self.meetings||= []
 
+    # If there is an available slot, find the first one and book the time
     if available_slot?(meeting.duration)
       first_available_slot = available_slots.select{|slot| slot.available_time >= meeting.duration}.first
       self.meetings << first_available_slot.book(meeting)
@@ -28,8 +30,13 @@ class ConferenceRoom < Base
 
   def report
     output = []
+    # Add morning meetings first
     meetings.select{|m| m.begin_time >= 9 && m.begin_time < 12}.each{|m| output << m.to_s}
+
+    # Add Lunch
     output <<  Meeting.new(title: "Lunch", begin_time: 12).to_s
+
+    # Add afternoon meetings
     meetings.select{|m| m.begin_time >= 1 && m.begin_time < 5}.each{|m| output << m.to_s}
     output.join("\n")
   end
